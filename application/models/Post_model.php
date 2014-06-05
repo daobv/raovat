@@ -1,5 +1,6 @@
 <?php
-class Post_model extends CI_Model{
+require_once('abstract_model.php');
+class Post_model extends Abstract_Model{
     public $id;
     public $title;
     public $slug;
@@ -7,16 +8,13 @@ class Post_model extends CI_Model{
     public $content;
     public $date;
     public  $author;
-
-    function __construct($author, $content, $description, $date, $title, $slug, $id)
+    function __construct()
     {
-        $this->author = $author;
-        $this->content = $content;
-        $this->description = $description;
-        $this->date = $date;
-        $this->title = $title;
-        $this->slug = $slug;
-        $this->id = $id;
+        parent::__construct();
+    }
+    public function getTable()
+    {
+        return 'post';
     }
 
     /**

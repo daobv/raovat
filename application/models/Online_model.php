@@ -1,18 +1,19 @@
 <?php
-class Online_model extends CI_Model{
+require_once('abstract_model.php');
+class Online_model extends Abstract_Model{
     public $id;
     public $user;
     public $ip;
     public $time;
 
-    function __construct($id, $ip, $time, $user)
+    function __construct()
     {
-        $this->id = $id;
-        $this->ip = $ip;
-        $this->time = $time;
-        $this->user = $user;
+        parent::__construct();
     }
-
+    public function getTable()
+    {
+        return 'online';
+    }
     /**
      * @param mixed $id
      */

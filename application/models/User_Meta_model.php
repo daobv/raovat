@@ -1,16 +1,18 @@
 <?php
-    class User_Meta_model extends CI_Model{
+require_once('abstract_model.php');
+    class User_Meta_model extends Abstract_Model{
         public $id;
         public $user_id;
         public $name;
         public $value;
 
-        function __construct($id, $name, $value, $user_id)
+        function __construct()
         {
-            $this->id = $id;
-            $this->name = $name;
-            $this->value = $value;
-            $this->user_id = $user_id;
+            parent::__construct();
+        }
+        public function getTable()
+        {
+            return 'user_meta';
         }
         /**
          * @param mixed $id

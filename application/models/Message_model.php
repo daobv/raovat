@@ -1,5 +1,6 @@
 <?php
-class Message_model extends CI_Model{
+require_once('abstract_model.php');
+class Message_model extends Abstract_Model{
     public $id;
     public $author;
     public $receiver;
@@ -7,16 +8,14 @@ class Message_model extends CI_Model{
     public $content;
     public $date;
 
-    function __construct($content, $author, $date, $id, $receiver, $title)
+    function __construct()
     {
-        $this->content = $content;
-        $this->author = $author;
-        $this->date = $date;
-        $this->id = $id;
-        $this->receiver = $receiver;
-        $this->title = $title;
+        parent::__construct();
     }
-
+    public function getTable()
+    {
+        return 'message';
+    }
     /**
      * @param mixed $author
      */

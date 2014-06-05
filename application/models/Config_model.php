@@ -1,17 +1,18 @@
 <?php
-class Product_Meta_model extends CI_Model{
+require_once('abstract_model.php');
+class Config_model extends Abstract_Model{
     public $id;
-    public $product_id;
     public $name;
     public $value;
-
-    function __construct($id, $name, $product_id, $value)
+    function __construct()
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->product_id = $product_id;
-        $this->value = $value;
+        parent::__construct();
     }
+    public function getTable()
+    {
+        return 'config';
+    }
+
     /**
      * @param mixed $id
      */
@@ -45,22 +46,6 @@ class Product_Meta_model extends CI_Model{
     }
 
     /**
-     * @param mixed $product_id
-     */
-    public function setProductId($product_id)
-    {
-        $this->product_id = $product_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProductId()
-    {
-        return $this->product_id;
-    }
-
-    /**
      * @param mixed $value
      */
     public function setValue($value)
@@ -75,6 +60,5 @@ class Product_Meta_model extends CI_Model{
     {
         return $this->value;
     }
-
 
 }

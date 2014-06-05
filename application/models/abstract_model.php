@@ -70,8 +70,8 @@ abstract class Abstract_Model extends CI_Model
         return $this;
     }
 
-    public function del()
+    public function del($id)
     {
-        $this->db->delete($this->getTable(), array('id' => $this->id));
+        $this->db->delete($this->getTable(), array('id' => $id));
     }
 }

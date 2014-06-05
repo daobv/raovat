@@ -1,16 +1,17 @@
 <?php
-class Post_Meta_model extends CI_Model{
+require_once('abstract_model.php');
+class Post_Meta_model extends Abstract_Model{
     public $id;
     public $post_id;
     public $name;
     public $value;
-
-    function __construct($id, $name, $post_id, $value)
+    function __construct()
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->post_id = $post_id;
-        $this->value = $value;
+        parent::__construct();
+    }
+    public function getTable()
+    {
+        return 'post_meta';
     }
     /**
      * @param mixed $id

@@ -1,5 +1,6 @@
 <?php
-class User_model extends CI_Model{
+require_once('abstract_model.php');
+class User_model extends Abstract_Model{
     public $id;
     public $username;
     public $password;
@@ -18,8 +19,11 @@ class User_model extends CI_Model{
      */
     function __construct()
     {
-        // Call the Model constructor
         parent::__construct();
+    }
+    public function getTable()
+    {
+        return 'user';
     }
     public function setAddress($address)
     {
@@ -216,11 +220,5 @@ class User_model extends CI_Model{
     {
         return $this->username;
     }
-    public function get_last_ten_entries()
-    {
-        $query = $this->db->get('entries', 10);
-        return $query->result();
-    }
-
 
 }

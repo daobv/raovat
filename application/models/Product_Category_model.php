@@ -4,13 +4,14 @@ class Product_Category_model{
     public $product_id;
     public $category_id;
 
-    function __construct($category_id, $id, $product_id)
+    function __construct()
     {
-        $this->category_id = $category_id;
-        $this->id = $id;
-        $this->product_id = $product_id;
+        parent::__construct();
     }
-
+    public function getTable()
+    {
+        return 'product_category';
+    }
     /**
      * @param mixed $category_id
      */

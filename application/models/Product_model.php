@@ -1,5 +1,6 @@
 <?php
-class Product_model extends CI_Model{
+require_once('abstract_model.php');
+class Product_model extends Abstract_Model{
     public $id;
     public $name;
     public $price;
@@ -9,16 +10,13 @@ class Product_model extends CI_Model{
     public $description;
     public $date;
 
-    function __construct($date, $description, $id, $image, $manufacturer, $name, $price, $region)
+    function __construct()
     {
-        $this->date = $date;
-        $this->description = $description;
-        $this->id = $id;
-        $this->image = $image;
-        $this->manufacturer = $manufacturer;
-        $this->name = $name;
-        $this->price = $price;
-        $this->region = $region;
+        parent::__construct();
+    }
+    public function getTable()
+    {
+        return 'product';
     }
     /**
      * @param mixed $date

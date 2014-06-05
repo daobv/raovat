@@ -1,5 +1,6 @@
 <?php
-class Category_model extends CI_Model{
+require_once('abstract_model.php');
+class Category_model extends Abstract_Model{
 
     public $id;
     public $root;
@@ -8,18 +9,15 @@ class Category_model extends CI_Model{
     public $description;
     public $page_title;
     public $content_tag;
-
-    function __construct($content_tag, $description, $id, $name, $page_title, $root, $slug)
+    function __construct()
     {
-        $this->content_tag = $content_tag;
-        $this->description = $description;
-        $this->id = $id;
-        $this->name = $name;
-        $this->page_title = $page_title;
-        $this->root = $root;
-        $this->slug = $slug;
+        parent::__construct();
     }
 
+    public function getTable()
+    {
+        return 'category';
+    }
     /**
      * @param mixed $content_tag
      */

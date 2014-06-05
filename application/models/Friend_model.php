@@ -1,16 +1,18 @@
 <?php
-class Friend_model extends CI_Model{
+require_once('abstract_model.php');
+class Friend_model extends Abstract_Model{
     public $id;
     public $user;
     public $friend;
 
-    function __construct($id, $friend, $user)
+    function __construct()
     {
-        $this->id = $id;
-        $this->friend = $friend;
-        $this->user = $user;
+        parent::__construct();
     }
-
+    public function getTable()
+    {
+        return 'friend';
+    }
     /**
      * @param mixed $friend
      */
@@ -58,5 +60,6 @@ class Friend_model extends CI_Model{
     {
         return $this->user;
     }
+
 
 }
