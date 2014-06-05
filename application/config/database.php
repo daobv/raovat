@@ -89,12 +89,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn'	=> '127.0.0.1',
 	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => 'mysqli',
+	'username' => 'root',
+	'password' => '12345',
+	'database' => 'raovat',
+	'dbdriver' => 'mysql',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => TRUE,

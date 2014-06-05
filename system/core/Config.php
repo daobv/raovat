@@ -357,5 +357,5 @@ class CI_Config {
 
 }
 
-/* End of file Config.php */
-/* Location: ./system/core/Config.php */
+/* End of file config_model.php */
+/* Location: ./system/core/config_model.php */
