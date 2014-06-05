@@ -14,7 +14,7 @@ class Product_model extends Abstract_Model{
     {
         parent::__construct();
     }
-    public function getTable()
+    public function tableName()
     {
         return 'product';
     }

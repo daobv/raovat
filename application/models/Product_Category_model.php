@@ -1,5 +1,7 @@
 <?php
-class Product_Category_model{
+require_once('abstract_model.php');
+class Product_Category_model extends Abstract_Model
+{
     public $id;
     public $product_id;
     public $category_id;
@@ -8,7 +10,7 @@ class Product_Category_model{
     {
         parent::__construct();
     }
-    public function getTable()
+    public function tableName()
     {
         return 'product_category';
     }

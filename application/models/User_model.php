@@ -14,17 +14,19 @@ class User_model extends Abstract_Model{
     public $address;
     public $avatar;
     public $role;
-    /**
-     * @param mixed $address
-     */
+
     function __construct()
     {
         parent::__construct();
     }
-    public function getTable()
+    public function tableName()
     {
         return 'user';
     }
+
+    /**
+     * @param mixed $address
+     */
     public function setAddress($address)
     {
         $this->address = $address;

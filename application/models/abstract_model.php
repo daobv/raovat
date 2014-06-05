@@ -5,20 +5,19 @@ abstract class Abstract_Model extends CI_Model
     function __construct()
     {
         parent::__construct();
-        $this->load->database();
     }
 
     /**
      * @return mixed
      */
-    abstract function getTable();
+    abstract function tableName();
 
     /**
      * @return array
      */
     public function getFields()
     {
-        $fields = $this->db->list_fields($this->getTable());
+        $fields = $this->db->list_fields($this->tableName());
         return array_diff($fields, array('id'));
     }
 
@@ -29,7 +28,7 @@ abstract class Abstract_Model extends CI_Model
      */
     public function load($id)
     {
-        $query = $this->db->get_where($this->getTable(), array('id' => $id), 1, null);
+        $query = $this->db->get_where($this->tableName(), array('id' => $id), 1, null);
         $data = $query->row_array();
         if ($data) {
             return $this->setData($data);
@@ -62,9 +61,9 @@ abstract class Abstract_Model extends CI_Model
         }
 
         if ($this->id) {
-            $this->db->update($this->getTable(), $data, array('id' => $this->id));
+            $this->db->update($this->tableName(), $data, array('id' => $this->id));
         } else {
-            $this->db->insert($this->getTable(), $data);
+            $this->db->insert($this->tableName(), $data);
         }
 
         return $this;
@@ -72,6 +71,6 @@ abstract class Abstract_Model extends CI_Model
 
     public function del($id)
     {
-        $this->db->delete($this->getTable(), array('id' => $id));
+        $this->db->delete($this->tableName(), array('id' => $id));
     }
 }
