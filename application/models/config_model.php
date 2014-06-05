@@ -1,15 +1,15 @@
 <?php
-class Config_model extends CI_Model{
+require_once('abstract_model.php');
+class Config_model extends Abstract_Model{
     public $id;
     public $name;
     public $value;
 
-    function __construct($id, $name, $value)
+    public function getTable()
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->value = $value;
+        return 'config';
     }
+
     /**
      * @param mixed $id
      */

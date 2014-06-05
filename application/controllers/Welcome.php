@@ -45,9 +45,11 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-        $this->load->model('User_model');s
-        $data['query'] = $this->User_model->get_last_ten_entries();
 		$this->load->view('welcome_message');
+        $this->load->model('config_model');
+        $config = $this->config_model;
+        $config->setData(array('name'=>'test3', 'value'=>'test'))->save();
+        var_dump($config);
 	}
 }
 
