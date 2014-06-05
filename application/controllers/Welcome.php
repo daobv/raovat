@@ -48,8 +48,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
         $this->load->model('config_model');
         $config = $this->config_model;
-        $config->setData(array('name'=>'test3', 'value'=>'test'))->save();
-        var_dump($config);
+        var_dump($config->getFields());
 	}
 }
 

@@ -1,5 +1,5 @@
 <?php
-require_once('abstract_model.php');
+require_once('Abstract_model.php');
 class Product_model extends Abstract_Model{
     public $id;
     public $name;
