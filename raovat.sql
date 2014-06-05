@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2014 at 01:35 AM
+-- Generation Time: Jun 06, 2014 at 02:06 AM
 -- Server version: 5.5.32-0ubuntu7
 -- PHP Version: 5.5.3-1ubuntu2.3
 
@@ -131,10 +131,10 @@ CREATE TABLE IF NOT EXISTS `post` (
   `content` text NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `author` int(11) NOT NULL,
-  `city_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
-  UNIQUE KEY `city_id` (`city_id`)
+  UNIQUE KEY `city_id` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -161,11 +161,11 @@ CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `price` double NOT NULL,
-  `region` varchar(255) NOT NULL,
   `manufacturer` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `description` text NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `city_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
