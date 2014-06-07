@@ -9,6 +9,8 @@ class Category_model extends Abstract_Model{
     public $description;
     public $page_title;
     public $content_tag;
+    public $category_type;
+
     function __construct()
     {
         parent::__construct();
@@ -24,6 +26,22 @@ class Category_model extends Abstract_Model{
     public function setContentTag($content_tag)
     {
         $this->content_tag = $content_tag;
+    }
+
+    /**
+     * @param mixed $category_type
+     */
+    public function setCategoryType($category_type)
+    {
+        $this->category_type = $category_type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoryType()
+    {
+        return $this->category_type;
     }
 
     /**

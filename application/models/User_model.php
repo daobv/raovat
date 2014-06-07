@@ -14,6 +14,7 @@ class User_model extends Abstract_Model{
     public $address;
     public $avatar;
     public $role;
+    public $is_activate;
 
     function __construct()
     {
@@ -22,6 +23,22 @@ class User_model extends Abstract_Model{
     public function tableName()
     {
         return 'user';
+    }
+
+    /**
+     * @param mixed $is_activate
+     */
+    public function setIsActivate($is_activate)
+    {
+        $this->is_activate = $is_activate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsActivate()
+    {
+        return $this->is_activate;
     }
 
     /**

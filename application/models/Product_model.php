@@ -4,11 +4,11 @@ class Product_model extends Abstract_Model{
     public $id;
     public $name;
     public $price;
-    public $region;
     public $manufacturer;
     public $image;
     public $description;
     public $date;
+    public $city_id;
 
     function __construct()
     {
@@ -51,19 +51,19 @@ class Product_model extends Abstract_Model{
     }
 
     /**
-     * @param mixed $region
+     * @param mixed $city_id
      */
-    public function setRegion($region)
+    public function setCityId($city_id)
     {
-        $this->region = $region;
+        $this->city_id = $city_id;
     }
 
     /**
      * @return mixed
      */
-    public function getRegion()
+    public function getCityId()
     {
-        return $this->region;
+        return $this->city_id;
     }
 
     /**
