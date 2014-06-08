@@ -78,6 +78,7 @@ class Category_controller extends Controller
             array('db' => 'name', 'dt' => 1),
             array('db' => 'root', 'dt' => 2),
             array('db' => 'description', 'dt' => 3),
+            array('db' => 'id', 'dt' => 4),
         );
 
         $sql_details = array(

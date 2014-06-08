@@ -13,18 +13,20 @@
                 <table id="datatable" class="display" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <td>ID#</td>
-                        <td>Tên danh mục</td>
-                        <td>Danh mục cha</td>
-                        <td>Mô tả</td>
+                        <td><strong>ID#</strong></td>
+                        <td><strong>Tên danh mục</strong></td>
+                        <td><strong>Danh mục cha</strong></td>
+                        <td><strong>Mô tả</strong></td>
+                        <td><strong>Sửa | Xóa</strong></td>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
-                        <td>ID#</td>
-                        <td>Tên danh mục</td>
-                        <td>Danh mục cha</td>
-                        <td>Mô tả</td>
+                        <td><strong>ID#</strong></td>
+                        <td><strong>Tên danh mục</strong></td>
+                        <td><strong>Danh mục cha</strong></td>
+                        <td><strong>Mô tả</strong></td>
+                        <td><strong>Sửa | Xóa</strong></td>
                     </tr>
                     </tfoot>
                 </table>
@@ -32,8 +34,25 @@
                     $('#datatable').dataTable({
                         "processing": true,
                         "serverSide": true,
-                        "ajax": "<?php echo base_url('admin/category/datatable') ?>"
+                        "ajax": "<?php echo base_url('admin/category/datatable') ?>",
+                        "columnDefs": [
+                            {
+                                "render": function ( data, type, row ) {
+                                    return '<a class="btn-edit" href="/admin/category/form?id=' + data + '">Sửa</a>'
+                                        + ' | <a onclick="return confirmDelete(this)" class="btn-delete" href="/admin/category/del?id=' + data + '">Xóa</a>';
+                                },
+                                "targets": 4
+                            },
+                            { "sortable": false,  "targets": 4 }
+                        ]
                     });
+
+                    function confirmDelete(el) {
+                        if (confirm("Bạn có đồng ý xóa danh mục này không?")) {
+                            location.href = $(el).attr('href');
+                        }
+                        return false;
+                    }
                 </script>
             <?php endif; ?>
         </div>
