@@ -47,7 +47,7 @@ if ($notnew) $formData = $data['form_data'];
                                   required><?php echo $notnew ? $formData->description : '' ?></textarea>
                     </div>
                     <div class="span6">
-                        <label for="content_tag">Tags</label>
+                        <label for="content_tag">Meta Content</label>
                         <textarea name="content_tag" id="content_tag"
                                   required><?php echo $notnew ? $formData->content_tag : '' ?></textarea>
                     </div>

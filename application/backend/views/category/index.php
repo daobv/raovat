@@ -7,43 +7,33 @@
             </div>
         </div>
         <div class="block-content collapse in">
-            <?php if (count($data) == 0): ?>
+            <?php if ($data == 0): ?>
                 <p>Không có danh mục nào</p>
             <?php else: ?>
-                <p class="pagination"><?php echo $links ?></p>
-                <table class="data-table" style="width: 100%">
+                <table id="datatable" class="display" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <td>ID#</td>
                         <td>Tên danh mục</td>
                         <td>Danh mục cha</td>
                         <td>Mô tả</td>
-                        <td>Kiểu danh mục</td>
-                        <td>Sửa | Xóa</td>
                     </tr>
                     </thead>
-                    <tbody>
-                    <?php foreach ($data as $cate): ?>
-                        <tr>
-                            <td><?php echo $cate['id'] ?></td>
-                            <td><?php echo $cate['name'] ?></td>
-                            <td><?php echo $cate['root'] ?></td>
-                            <td><?php echo $cate['description'] ?></td>
-                            <td><?php echo $cate['category_type'] ?></td>
-                            <td><a href="/admin/category/form?id=<?php echo $cate['id'] ?>">Sửa</a> | <a
-                                    href="/admin/category/del?id=<?php echo $cate['id'] ?>"
-                                    onclick="deleteConfirm(this);return false;">Xóa</a></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td>ID#</td>
+                        <td>Tên danh mục</td>
+                        <td>Danh mục cha</td>
+                        <td>Mô tả</td>
+                    </tr>
+                    </tfoot>
                 </table>
-                <p class="pagination"><?php echo $links ?></p>
                 <script type="text/javascript">
-                    function deleteConfirm(el) {
-                        if (confirm('Bạn có thật sự muốn xóa danh mục này?')) {
-                            location.href = $(el).attr('href');
-                        }
-                    }
+                    $('#datatable').dataTable({
+                        "processing": true,
+                        "serverSide": true,
+                        "ajax": "<?php echo base_url('admin/category/datatable') ?>"
+                    });
                 </script>
             <?php endif; ?>
         </div>

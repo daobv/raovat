@@ -5,24 +5,13 @@ class Category_controller extends Controller
     public function __construct()
     {
         parent::__construct();
-
     }
 
     public function index()
     {
-        $this->load->library('pagination');
-        $config['base_url'] = base_url('admin/category/index');
-        $config['total_rows'] = $this->getModel('category_model')->record_count();
-        $config['per_page'] = 10;
-        $config['uri_segment'] = 3;
-
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $temp['links'] = $this->pagination->create_links();
-
         $temp['title'] = "List danh mục";
         $temp['template'] = 'category/index';
-        $temp['data'] = $this->getModel('category_model')->fetch($config['per_page'], $page);
+        $temp['data'] = $this->getModel('category_model')->record_count();
         $this->load->view('layout/layout', $temp);
     }
 
@@ -75,5 +64,31 @@ class Category_controller extends Controller
             $this->getModel('category_model')->del($id);
             redirect(base_url('admin/category'));
         }
+    }
+
+    public function datatable()
+    {
+        $this->load->library('SSP');
+        $table = $this->getModel('category_model')->tableName();
+
+        $primaryKey = 'id';
+
+        $columns = array(
+            array('db' => 'id', 'dt' => 0),
+            array('db' => 'name', 'dt' => 1),
+            array('db' => 'root', 'dt' => 2),
+            array('db' => 'description', 'dt' => 3),
+        );
+
+        $sql_details = array(
+            'user' => $this->db->username,
+            'pass' => $this->db->password,
+            'db' => $this->db->database,
+            'host' => $this->db->hostname
+        );
+
+        echo json_encode(
+            SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
+        );
     }
 }
