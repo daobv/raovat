@@ -49,6 +49,7 @@ abstract class Abstract_Model extends CI_Model
     public function setData($data)
     {
         foreach ($data as $key => $value) {
+            if (!property_exists(get_class($this), $key)) continue;
             $this->$key = $value;
         }
 
@@ -79,13 +80,35 @@ abstract class Abstract_Model extends CI_Model
         $this->db->delete($this->tableName(), array('id' => $id));
     }
 
-    public function listAll($fields = array())
+    public function listAll($fields = array(), $where = array())
     {
         if (count($fields)) {
             $this->db->select(implode(',', $fields));
         }
 
+        if (count($where)) {
+            $this->db->where($where);
+        }
+
         $query = $this->db->get($this->tableName());
         return $query->result_array();
+    }
+
+    public function record_count()
+    {
+        return $this->db->count_all($this->tableName());
+    }
+
+    public function fetch($limit, $start) {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get($this->tableName());
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
     }
 }

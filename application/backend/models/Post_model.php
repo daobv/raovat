@@ -7,7 +7,9 @@ class Post_model extends Abstract_Model{
     public $description;
     public $content;
     public $date;
-    public  $author;
+    public $author;
+    public $category_id;
+
     function __construct()
     {
         parent::__construct();
@@ -15,6 +17,22 @@ class Post_model extends Abstract_Model{
     public function tableName()
     {
         return 'post';
+    }
+
+    /**
+     * @param mixed $category_id
+     */
+    public function setCategoryId($category_id)
+    {
+        $this->category_id = $category_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoryId()
+    {
+        return $this->category_id;
     }
 
     /**

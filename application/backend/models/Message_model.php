@@ -2,11 +2,12 @@
 require_once('Abstract_model.php');
 class Message_model extends Abstract_Model{
     public $id;
-    public $author;
-    public $receiver;
+    public $sender;
+    public $recipient;
     public $title;
     public $content;
     public $date;
+    public $is_read;
 
     function __construct()
     {
@@ -15,21 +16,6 @@ class Message_model extends Abstract_Model{
     public function tableName()
     {
         return 'message';
-    }
-    /**
-     * @param mixed $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**
@@ -81,19 +67,51 @@ class Message_model extends Abstract_Model{
     }
 
     /**
-     * @param mixed $receiver
+     * @param mixed $is_read
      */
-    public function setReceiver($receiver)
+    public function setIsRead($is_read)
     {
-        $this->receiver = $receiver;
+        $this->is_read = $is_read;
     }
 
     /**
      * @return mixed
      */
-    public function getReceiver()
+    public function getIsRead()
     {
-        return $this->receiver;
+        return $this->is_read;
+    }
+
+    /**
+     * @param mixed $recipient
+     */
+    public function setRecipient($recipient)
+    {
+        $this->recipient = $recipient;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRecipient()
+    {
+        return $this->recipient;
+    }
+
+    /**
+     * @param mixed $sender
+     */
+    public function setSender($sender)
+    {
+        $this->sender = $sender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSender()
+    {
+        return $this->sender;
     }
 
     /**
@@ -111,5 +129,6 @@ class Message_model extends Abstract_Model{
     {
         return $this->title;
     }
+
 
 }

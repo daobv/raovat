@@ -78,6 +78,9 @@ $route['default_controller'] = 'Index_controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['login'] = "user_controller/login";
+$route['category'] = "category_controller/index";
+$route['category/([a-z0-9]+)'] = "category_controller/$1";
+$route['category/([a-z0-9]+)/(\d+)'] = "category_controller/$1/$2";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
