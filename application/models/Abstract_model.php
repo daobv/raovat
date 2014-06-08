@@ -104,11 +104,8 @@ abstract class Abstract_Model extends CI_Model
         $query = $this->db->get($this->tableName());
 
         if ($query->num_rows() > 0) {
-            foreach ($query->result() as $row) {
-                $data[] = $row;
-            }
-            return $data;
+            return $query->result_array();
         }
-        return false;
+        return array();
     }
 }
