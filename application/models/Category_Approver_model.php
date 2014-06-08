@@ -1,16 +1,17 @@
 <?php
 require_once('Abstract_model.php');
-class Post_Meta_model extends Abstract_Model{
+class Category_Approver_model extends Abstract_Model
+{
     public $id;
-    public $post_id;
-    public $name;
-    public $value;
+    public $category_id;
+    public $user_id;
+
     function __construct()
     {
         parent::__construct();
     }
     public function tableName()
     {
-        return 'post_meta';
+        return 'category_approver';
     }
 }
