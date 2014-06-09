@@ -65,31 +65,4 @@ class Category_controller extends Controller
             redirect(base_url('admin/category'));
         }
     }
-
-    public function datatable()
-    {
-        $this->load->library('SSP');
-        $table = $this->getModel('category_model')->tableName();
-
-        $primaryKey = 'id';
-
-        $columns = array(
-            array('db' => 'id', 'dt' => 0),
-            array('db' => 'name', 'dt' => 1),
-            array('db' => 'root', 'dt' => 2),
-            array('db' => 'description', 'dt' => 3),
-            array('db' => 'id', 'dt' => 4),
-        );
-
-        $sql_details = array(
-            'user' => $this->db->username,
-            'pass' => $this->db->password,
-            'db' => $this->db->database,
-            'host' => $this->db->hostname
-        );
-
-        echo json_encode(
-            SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
-        );
-    }
 }
