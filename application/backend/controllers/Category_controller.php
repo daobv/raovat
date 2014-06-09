@@ -5,64 +5,29 @@ class Category_controller extends Controller
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->database();
+        $this->load->helper('url');
+
+        $this->load->library('grocery_CRUD');
     }
 
     public function index()
     {
-        $temp['title'] = "List danh mục";
-        $temp['template'] = 'category/index';
-        $temp['data'] = $this->getModel('category_model')->record_count();
-        $this->load->view('layout/layout', $temp);
+        $crud = new grocery_CRUD();
+
+        $crud->set_table('category');
+        $crud->set_subject('Category');
+        $crud->required_fields('name','description','root','slug','page_title','content_tag','category_type');
+        $crud->columns('id','name','description','root','slug','page_title','content_tag','category_type');
+
+        $output = $crud->render();
+
+        $this->_output($output);
     }
 
-    public function form()
+    public function _output($output = null)
     {
-        if (isset($_GET['id']) && !empty($_GET['id'])) $isnew = false;
-        else $isnew = true;
-
-        $this->form_validation->set_rules('name', 'Tên danh mục', 'required');
-        $this->form_validation->set_rules('root', 'Danh mục cha', 'required');
-        $this->form_validation->set_rules('slug', 'Slug', 'required');
-        $this->form_validation->set_rules('page_title', 'Tiêu đề trang', 'required');
-        $this->form_validation->set_rules('description', 'Mô tả', 'required');
-        $this->form_validation->set_rules('content_tag', 'Tags', 'required');
-        $this->form_validation->set_rules('category_type', 'Kiểu danh mục', 'required');
-
-        if ($isnew)
-            $temp['title'] = "Tạo mới danh mục";
-        else
-            $temp['title'] = "Cập nhật danh mục";
-
-        $temp['template'] = 'category/form';
-        $categories = $this->getModel('category_model')->listAll(array('id', 'name'), array('category_type' => 0));
-        $list = array("" => "", "0" => "Danh mục Root");
-        foreach ($categories as $cate) {
-            if (!$isnew && $cate['id'] == $_GET['id']) continue;
-            $list[$cate['id']] = $cate['name'];
-        }
-        $temp['data']['dropdownlist'] = $list;
-
-        if (!$isnew)
-            $temp['data']['form_data'] = $this->getModel('category_model')->load($_GET['id']);
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('layout/layout', $temp);
-        } else {
-            try {
-                $this->getModel('category_model')->setData($_POST)->save();
-                redirect(base_url('admin/category'));
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-        }
-    }
-
-    public function del()
-    {
-        if (isset($_GET['id'])) {
-            $id = (int)$_GET['id'];
-            $this->getModel('category_model')->del($id);
-            redirect(base_url('admin/category'));
-        }
+        $this->load->view('example.php',$output);
     }
 }
