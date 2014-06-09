@@ -77,6 +77,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['post/([a-z0-9]+)/(\d+)'] = "category_controller/$1/$2";
+$route['user'] = "user_controller";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
