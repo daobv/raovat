@@ -11,7 +11,6 @@
             <div class="span3">
                 <div class="chart" data-percent="73">73%</div>
                 <div class="chart-bottom-heading"><span class="label label-info">Visitors</span>
-
                 </div>
             </div>
             <div class="span3">
