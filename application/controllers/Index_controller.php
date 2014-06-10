@@ -10,6 +10,8 @@ class Index_controller extends Controller
 
     public function index()
     {
-        $this->load->view('page');
+        $data['title'] = 'AutoMarket';
+
+        $this->load->view('page', $data);
     }
 }
