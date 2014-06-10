@@ -5,12 +5,9 @@
                 <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
                 <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
                 <li>
-                    <a href="#">Dashboard</a> <span class="divider">/</span>
+                    <a href="<?php echo base_url('admin') ?>">Dashboard</a> <span class="divider">/</span>
                 </li>
-                <li>
-                    <a href="#">Settings</a> <span class="divider">/</span>
-                </li>
-                <li class="active">Tools</li>
+                <li class="active"><?php echo $title; ?></li>
             </ul>
         </div>
     </div>

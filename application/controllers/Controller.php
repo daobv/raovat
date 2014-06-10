@@ -5,6 +5,12 @@ class Controller extends CI_Controller {
     public $contentTag;
     public $description;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper('url');
+    }
+
     public function getModel($modelName)
     {
         if (!property_exists(get_class($this), $modelName))

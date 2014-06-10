@@ -1,0 +1,45 @@
+/* Fixed max-width of container, container-fluid */
+.container, .container-fluid {
+    width: 980px !important;
+    margin: 0 auto;
+}
+.ten-columns .span1 {width: 7.6923076923076925%;
+    *width: 7.628205128205129%;}
+.five-columns .span2 {width: 18.3017%;
+    *width: 18.2%;}
+/*
+@media (max-width: 767px) {
+    .container, .container-fluid {
+        width: auto !important;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    body {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    [class*="span"],
+    .uneditable-input[class*="span"],
+    .row-fluid [class*="span"] {
+        display: block;
+        float: none;
+        width: 100%;
+        margin-left: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .span12,
+    .row-fluid .span12 {
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .row-fluid [class*="offset"]:first-child {
+        margin-left: 0;
+    }
+}
+*/
