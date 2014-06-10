@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2014 at 05:55 PM
+-- Generation Time: Jun 10, 2014 at 07:02 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -73,7 +73,77 @@ CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `city`
+--
+
+INSERT INTO `city` (`id`, `name`) VALUES
+(1, 'An Giang'),
+(2, 'Bà Rịa-Vũng Tàu'),
+(3, 'Bạc Liêu'),
+(4, 'Bắc Kạn'),
+(5, 'Bắc Giang'),
+(6, 'Bắc Ninh'),
+(7, 'Bến Tre'),
+(8, 'Bình Dương'),
+(9, 'Bình Định'),
+(10, 'Bình Phước'),
+(11, 'Bình Thuận'),
+(12, 'Cà Mau'),
+(13, 'Cao Bằng'),
+(14, 'Cần Thơ'),
+(15, 'Đà Nẵng'),
+(16, 'Đắk Lắk'),
+(17, 'Đắk Nông'),
+(18, 'Điện Biên'),
+(19, 'Đồng Nai'),
+(20, 'Đồng Tháp'),
+(21, 'Gia Lai'),
+(22, 'Hà Giang'),
+(23, 'Hà Nam'),
+(24, 'Hà Nội'),
+(25, 'Hà Tây'),
+(26, 'Hà Tĩnh'),
+(27, 'Hải Dương'),
+(28, 'Hải Phòng'),
+(29, 'Hòa Bình'),
+(30, 'Hồ Chí Minh'),
+(31, 'Hậu Giang'),
+(32, 'Hưng Yên'),
+(33, 'Khánh Hòa'),
+(34, 'Kiên Giang'),
+(35, 'Kon Tum'),
+(36, 'Lai Châu'),
+(37, 'Lào Cai'),
+(38, 'Lạng Sơn'),
+(39, 'Lâm Đồng'),
+(40, 'Long An'),
+(41, 'Nam Định'),
+(42, 'Nghệ An'),
+(43, 'Ninh Bình'),
+(44, 'Ninh Thuận'),
+(45, 'Phú Thọ'),
+(46, 'Phú Yên'),
+(47, 'Quảng Bình'),
+(48, 'Quảng Nam'),
+(49, 'Quảng Ngãi'),
+(50, 'Quảng Ninh'),
+(51, 'Quảng Trị'),
+(52, 'Sóc Trăng'),
+(53, 'Sơn La'),
+(54, 'Tây Ninh'),
+(55, 'Thái Bình'),
+(56, 'Thái Nguyên'),
+(57, 'Thanh Hóa'),
+(58, 'Thừa Thiên - Huế'),
+(59, 'Tiền Giang'),
+(60, 'Trà Vinh'),
+(61, 'Tuyên Quang'),
+(62, 'Vĩnh Long'),
+(63, 'Vĩnh Phúc'),
+(64, 'Yên Bái');
 
 -- --------------------------------------------------------
 
@@ -205,7 +275,14 @@ CREATE TABLE IF NOT EXISTS `product` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `slug`, `price`, `manufacturer`, `image`, `description`, `page_title`, `content_tag`, `date`, `city_id`, `author_id`, `status`) VALUES
+(2, 'test', 'test', 39.999, 'test', '86ffc-dog1.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -259,7 +336,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role` tinyint(4) NOT NULL DEFAULT '0',
   `is_activate` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `gender`, `first_name`, `middle_name`, `last_name`, `dob`, `email`, `phone`, `address`, `avatar`, `role`, `is_activate`) VALUES
+(1, 'test', 'abc123', 1, 'test', 'test', 'test', '1991-02-27', 'test@abc.com', '0978104924', 'test', '7c2d0-dog2.jpg', 1, 1);
 
 -- --------------------------------------------------------
 
