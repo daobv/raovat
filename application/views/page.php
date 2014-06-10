@@ -28,7 +28,7 @@
     <div class="container-fluid">
         <!-- BEGIN LEFT SIDEBAR (.span3) -->
         <div id="left-sidebar">
-            <?php $this->load->view('page/left_sidebar') ?>
+            <?php $this->load->view('page/left_sidebar',$categories) ?>
         </div>
         <!-- END LEFT SIDEBAR -->
 
@@ -40,7 +40,8 @@
 
         <!-- BEGIN MAIN CONTENT (.span6) -->
         <div id="main-content">
-            <?php $this->load->view('page/main') ?>
+
+            <?php $this->load->view($template,$content) ?>
 
         </div>
         <!-- END MAIN CONTENT -->

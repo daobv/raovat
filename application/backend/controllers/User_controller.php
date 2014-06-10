@@ -9,11 +9,6 @@ class User_controller extends Controller{
 
         $this->load->library('grocery_CRUD');
     }
-    public function _example_output($output = null)
-    {
-        $this->load->view('example.php',$output);
-    }
-
     public function index()
     {
         $crud = new Grocery_CRUD();
@@ -36,4 +31,13 @@ class User_controller extends Controller{
         $output = $crud->render();
         $this->_example_output($output);
     }
+    public function _example_output($output = null)
+    {
+        $data['title'] = 'Quản lý danh mục';
+        $data['template'] = 'grid_view';
+        $data['data'] = $output;
+
+        $this->load->view('layout/layout', $data);
+    }
+
 }

@@ -11,7 +11,9 @@ class Index_controller extends Controller
     public function index()
     {
         $data['title'] = 'AutoMarket';
-
+        $data['categories'] = $this->category;
+        $data['template'] = "index/index";
+        $data['content'] = "test";
         $this->load->view('page', $data);
     }
 }

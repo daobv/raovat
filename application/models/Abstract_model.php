@@ -80,16 +80,15 @@ abstract class Abstract_Model extends CI_Model
         $this->db->delete($this->tableName(), array('id' => $id));
     }
 
-    public function listAll($fields = array(), $where = array())
+    public function listAll($fields = array(), $where = array(),$order = NULL)
     {
-        if (count($fields)) {
-            $this->db->select(implode(',', $fields));
-        }
 
-        if (count($where)) {
+        if (count($where) > 0) {
             $this->db->where($where);
         }
-
+        if($order != NULL){
+            $this->db->order_by($order);
+        }
         $query = $this->db->get($this->tableName());
         return $query->result_array();
     }
