@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.6deb1
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 08, 2014 at 12:29 PM
--- Server version: 5.5.32-0ubuntu7
--- PHP Version: 5.5.3-1ubuntu2.3
+-- Host: 127.0.0.1
+-- Generation Time: Jun 10, 2014 at 05:36 PM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `raovat`
+-- Database: `ci_raovat`
 --
 
 -- --------------------------------------------------------
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `category`
 --
 
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `root` int(11) NOT NULL,
@@ -53,6 +54,7 @@ INSERT INTO `category` (`id`, `root`, `name`, `slug`, `description`, `page_title
 -- Table structure for table `category_approver`
 --
 
+DROP TABLE IF EXISTS `category_approver`;
 CREATE TABLE IF NOT EXISTS `category_approver` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL,
@@ -66,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `category_approver` (
 -- Table structure for table `city`
 --
 
+DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -78,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `city` (
 -- Table structure for table `config`
 --
 
+DROP TABLE IF EXISTS `config`;
 CREATE TABLE IF NOT EXISTS `config` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -99,11 +103,12 @@ INSERT INTO `config` (`id`, `name`, `value`) VALUES
 -- Table structure for table `friend`
 --
 
+DROP TABLE IF EXISTS `friend`;
 CREATE TABLE IF NOT EXISTS `friend` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) NOT NULL,
   `friend` int(11) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -113,6 +118,7 @@ CREATE TABLE IF NOT EXISTS `friend` (
 -- Table structure for table `message`
 --
 
+DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sender` int(11) NOT NULL,
@@ -130,6 +136,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 -- Table structure for table `online`
 --
 
+DROP TABLE IF EXISTS `online`;
 CREATE TABLE IF NOT EXISTS `online` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) NOT NULL,
@@ -145,6 +152,7 @@ CREATE TABLE IF NOT EXISTS `online` (
 -- Table structure for table `post`
 --
 
+DROP TABLE IF EXISTS `post`;
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -165,6 +173,7 @@ CREATE TABLE IF NOT EXISTS `post` (
 -- Table structure for table `post_meta`
 --
 
+DROP TABLE IF EXISTS `post_meta`;
 CREATE TABLE IF NOT EXISTS `post_meta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `post_id` int(11) NOT NULL,
@@ -179,16 +188,21 @@ CREATE TABLE IF NOT EXISTS `post_meta` (
 -- Table structure for table `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `price` double NOT NULL,
   `manufacturer` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `city_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `author_id` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -197,6 +211,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 -- Table structure for table `product_category`
 --
 
+DROP TABLE IF EXISTS `product_category`;
 CREATE TABLE IF NOT EXISTS `product_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
@@ -210,6 +225,7 @@ CREATE TABLE IF NOT EXISTS `product_category` (
 -- Table structure for table `product_meta`
 --
 
+DROP TABLE IF EXISTS `product_meta`;
 CREATE TABLE IF NOT EXISTS `product_meta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
@@ -224,6 +240,7 @@ CREATE TABLE IF NOT EXISTS `product_meta` (
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -248,6 +265,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Table structure for table `user_meta`
 --
 
+DROP TABLE IF EXISTS `user_meta`;
 CREATE TABLE IF NOT EXISTS `user_meta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
