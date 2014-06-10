@@ -8,7 +8,6 @@ class Category_controller extends Controller
         parent::__construct();
 
         $this->load->database();
-        $this->load->helper('url');
 
         $this->load->library('grocery_CRUD');
     }
