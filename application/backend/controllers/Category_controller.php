@@ -20,6 +20,7 @@ class Category_controller extends Controller
         $crud->set_table('category');
         $crud->columns('name', 'slug', 'description', 'root', 'page_title', 'content_tag', 'category_type', 'order');
         $crud->required_fields('name', 'slug', 'description', 'root', 'page_title', 'content_tag', 'category_type', 'order');
+        $crud->unique_fields('slug');
         $crud->display_as('name', 'Tên danh mục')
             ->display_as('slug', 'Đường dẫn')
             ->display_as('description', 'Mô tả')

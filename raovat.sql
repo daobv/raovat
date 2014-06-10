@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2014 at 05:36 PM
+-- Generation Time: Jun 10, 2014 at 05:55 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -197,6 +197,8 @@ CREATE TABLE IF NOT EXISTS `product` (
   `manufacturer` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `page_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content_tag` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `city_id` int(11) NOT NULL,
   `author_id` int(11) NOT NULL,
