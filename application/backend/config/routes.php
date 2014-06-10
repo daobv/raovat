@@ -81,8 +81,7 @@ $route['login'] = "user_controller/login";
 $route['user'] = "user_controller/index";
 $route['user/([\w/]+)'] = "user_controller/$1";
 $route['category'] = "category_controller/index";
-$route['category/([a-z0-9]+)'] = "category_controller/$1";
-$route['category/([a-z0-9]+)/(\d+)'] = "category_controller/$1/$2";
+$route['category/([\w/]+)'] = "category_controller/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

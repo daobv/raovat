@@ -1,68 +1,69 @@
 <?php
 require_once('Controller.php');
+
 class Category_controller extends Controller
 {
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->database();
+        $this->load->helper('url');
+
+        $this->load->library('grocery_CRUD');
     }
 
     public function index()
     {
-        $temp['title'] = "List danh mục";
-        $temp['template'] = 'category/index';
-        $temp['data'] = $this->getModel('category_model')->record_count();
-        $this->load->view('layout/layout', $temp);
+        $crud = new Grocery_CRUD();
+
+        $crud->set_table('category');
+        $crud->columns('name', 'slug', 'description', 'root', 'page_title', 'content_tag', 'category_type', 'order');
+        $crud->required_fields('name', 'slug', 'description', 'root', 'page_title', 'content_tag', 'category_type', 'order');
+        $crud->display_as('name', 'Tên danh mục')
+            ->display_as('slug', 'Đường dẫn')
+            ->display_as('description', 'Mô tả')
+            ->display_as('root', 'Danh mục cha')
+            ->display_as('page_title', 'Tiêu đề trang')
+            ->display_as('content_tag', 'Meta Content')
+            ->display_as('category_type', 'Kiểu danh mục')
+            ->display_as('order', 'Thứ tự');
+
+        $crud->field_type('root', 'dropdown', $this->getDropdownRoot());
+        $crud->field_type('category_type', 'dropdown', $this->getDropdownCategoryType());
+        $crud->field_type('order', 'integer');
+        $crud->set_subject('Danh mục');
+        $output = $crud->render();
+        $this->_example_output($output);
     }
 
-    public function form()
+    public function _example_output($output = null)
     {
-        if (isset($_GET['id']) && !empty($_GET['id'])) $isnew = false;
-        else $isnew = true;
+        $data['title'] = 'Quản lý danh mục';
+        $data['template'] = 'grid_view';
+        $data['data'] = $output;
 
-        $this->form_validation->set_rules('name', 'Tên danh mục', 'required');
-        $this->form_validation->set_rules('root', 'Danh mục cha', 'required');
-        $this->form_validation->set_rules('slug', 'Slug', 'required');
-        $this->form_validation->set_rules('page_title', 'Tiêu đề trang', 'required');
-        $this->form_validation->set_rules('description', 'Mô tả', 'required');
-        $this->form_validation->set_rules('content_tag', 'Tags', 'required');
-        $this->form_validation->set_rules('category_type', 'Kiểu danh mục', 'required');
-
-        if ($isnew)
-            $temp['title'] = "Tạo mới danh mục";
-        else
-            $temp['title'] = "Cập nhật danh mục";
-
-        $temp['template'] = 'category/form';
-        $categories = $this->getModel('category_model')->listAll(array('id', 'name'), array('category_type' => 0));
-        $list = array("" => "", "0" => "Danh mục Root");
-        foreach ($categories as $cate) {
-            if (!$isnew && $cate['id'] == $_GET['id']) continue;
-            $list[$cate['id']] = $cate['name'];
-        }
-        $temp['data']['dropdownlist'] = $list;
-
-        if (!$isnew)
-            $temp['data']['form_data'] = $this->getModel('category_model')->load($_GET['id']);
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('layout/layout', $temp);
-        } else {
-            try {
-                $this->getModel('category_model')->setData($_POST)->save();
-                redirect(base_url('admin/category'));
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-        }
+        $this->load->view('layout/layout', $data);
     }
 
-    public function del()
+    public function getDropdownRoot()
     {
-        if (isset($_GET['id'])) {
-            $id = (int)$_GET['id'];
-            $this->getModel('category_model')->del($id);
-            redirect(base_url('admin/category'));
+        $id = (int)$this->uri->segment(4);
+
+        $data = $this->getModel('category_model')->listAll(array('id', 'name'), array('id !=' => $id));
+        $result = array('0' => 'Danh mục Root');
+        foreach ($data as $item) {
+            $result[$item['id']] = $item['name'];
         }
+
+        return $result;
+    }
+
+    public function getDropdownCategoryType()
+    {
+        return array(
+            '0' => 'Danh mục sản phẩm',
+            '1' => 'Danh mục từ thiện'
+        );
     }
 }
