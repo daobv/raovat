@@ -105,8 +105,13 @@ abstract class Abstract_Model extends CI_Model
                 $this->db->select($fields);
             }
         }
-        if (count($where) > 0) {
+        if (is_array($where) && count($where) > 0) {
             $this->db->where($where);
+        } else if (is_string($where)) {
+            $where = trim($where);
+            if (!empty($where)) {
+                $this->db->where($where);
+            }
         }
         if ($order != NULL) {
             $this->db->order_by($order);
