@@ -1,18 +1,18 @@
 <div class="span3" id="sidebar">
     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
         <li class="active">
-            <a href="index.html"><i class="icon-chevron-right"></i> Dashboard</a>
+            <a href="<?php echo base_url('admin') ?>"><i class="icon-chevron-right"></i> Dashboard</a>
         </li>
         <li>
-            <a href="calendar.html"><i class="icon-chevron-right"></i> Calendar</a>
+            <a href="/admin/category">Quản lý danh mục</a>
         </li>
         <li>
-            <a href="stats.html"><i class="icon-chevron-right"></i> Statistics (Charts)</a>
+            <a href="/admin/product">Quản lý sản phẩm</a>
         </li>
         <li>
-            <a href="form.html"><i class="icon-chevron-right"></i> Forms</a>
+            <a href="/admin/user">Quản lý User</a>
         </li>
-        <li>
+        <!--<li>
             <a href="tables.html"><i class="icon-chevron-right"></i> Tables</a>
         </li>
         <li>
@@ -47,6 +47,6 @@
         </li>
         <li>
             <a href="#"><span class="badge badge-warning pull-right">4,231</span> Logs</a>
-        </li>
+        </li>-->
     </ul>
 </div>
