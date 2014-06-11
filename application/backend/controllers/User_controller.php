@@ -8,6 +8,7 @@ class User_controller extends Controller{
         $this->load->database();
 
         $this->load->library('grocery_CRUD');
+        $this->setArea('admin+mod');
     }
     public function index()
     {

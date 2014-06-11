@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2014 at 07:02 PM
+-- Generation Time: Jun 11, 2014 at 11:31 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=65 ;
 
 --
 -- Dumping data for table `city`
@@ -282,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `slug`, `price`, `manufacturer`, `image`, `description`, `page_title`, `content_tag`, `date`, `city_id`, `author_id`, `status`) VALUES
-(2, 'test', 'test', 39.999, 'test', '86ffc-dog1.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 1, 1, 1);
+(2, 'test', 'test', 39.999, 'test', '86ffc-dog1.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -335,15 +335,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `avatar` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `role` tinyint(4) NOT NULL DEFAULT '0',
   `is_activate` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `gender`, `first_name`, `middle_name`, `last_name`, `dob`, `email`, `phone`, `address`, `avatar`, `role`, `is_activate`) VALUES
-(1, 'test', 'abc123', 1, 'test', 'test', 'test', '1991-02-27', 'test@abc.com', '0978104924', 'test', '7c2d0-dog2.jpg', 1, 1);
+(1, 'admin', 'f865b53623b121fd34ee5426c792e5c33af8c227', 1, 'Admin', '', 'User', '2014-06-12', 'admin@admin.com', '0978104924', 'Ha Noi', '', 2, 1);
 
 -- --------------------------------------------------------
 

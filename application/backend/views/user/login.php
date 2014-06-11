@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Login</title>
+    <title><?php echo $title ?></title>
     <!-- Bootstrap -->
     <link href="<?php echo base_url('bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet" media="screen">
     <link href="<?php echo base_url('bootstrap/css/bootstrap-responsive.min.css')?>" rel="stylesheet" media="screen">
@@ -14,14 +14,15 @@
 </head>
 <body id="login">
 <div class="container">
-    <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="Email address">
-        <input type="password" class="input-block-level" placeholder="Password">
+    <form class="form-signin" action="<?php echo base_url('admin/loginpost') ?>" method="post">
+        <h2 class="form-signin-heading">Đăng nhập</h2>
+        <input name="username" type="text" class="input-block-level" placeholder="Tên đăng nhập">
+        <input name="password" type="password" class="input-block-level" placeholder="Mật khẩu">
         <label class="checkbox">
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me"> Ghi nhớ
         </label>
-        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+        <button class="btn btn-large btn-primary" type="submit">Đăng nhập</button>
+        <p>Chưa đăng nhập được thì lấy DB về xong dùng pass admin/admin123 nhé</p>
     </form>
 
 </div> <!-- /container -->

@@ -10,6 +10,7 @@ class Category_model extends Abstract_Model{
     public $page_title;
     public $content_tag;
     public $category_type;
+    public $order;
 
     function __construct()
     {
