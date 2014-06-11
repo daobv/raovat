@@ -75,30 +75,59 @@ abstract class Abstract_Model extends CI_Model
         return $this;
     }
 
+    /**
+     * @param $id
+     */
     public function del($id)
     {
         $this->db->delete($this->tableName(), array('id' => $id));
     }
 
-    public function listAll($fields = array(), $where = array())
-    {
-        if (count($fields)) {
-            $this->db->select(implode(',', $fields));
-        }
 
-        if (count($where)) {
+    /**
+     * @param mixed $fields
+     * @param array $where
+     * @param null $order
+     * @return array
+     *
+     * Examples:
+     * $categories = $this->getModel('Category_model')->listAll("*",array('root'=>0),"order DESC");
+     * $categories = $this->getModel('Category_model')->listAll("id,name",array('root'=>0),"order DESC");
+     * $categories = $this->getModel('Category_model')->listAll(array('id','name'),array('root'=>0),"order DESC");
+     */
+    public function listAll($fields = "", $where = array(), $order = NULL)
+    {
+        if (is_array($fields) && count($fields) > 0) {
+            $this->db->select(implode(',', $fields));
+        } else if (is_string($fields)) {
+            $fields = trim($fields);
+            if (!empty($fields)) {
+                $this->db->select($fields);
+            }
+        }
+        if (count($where) > 0) {
             $this->db->where($where);
         }
-
+        if ($order != NULL) {
+            $this->db->order_by($order);
+        }
         $query = $this->db->get($this->tableName());
         return $query->result_array();
     }
 
+    /**
+     * @return integer
+     */
     public function record_count()
     {
         return $this->db->count_all($this->tableName());
     }
 
+    /**
+     * @param $limit
+     * @param $start
+     * @return array
+     */
     public function fetch($limit, $start) {
         $this->db->limit($limit, $start);
         $query = $this->db->get($this->tableName());
