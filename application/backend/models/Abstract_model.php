@@ -86,7 +86,7 @@ abstract class Abstract_Model extends CI_Model
 
     /**
      * @param mixed $fields
-     * @param array $where
+     * @param mixed $where
      * @param null $order
      * @return array
      *
@@ -95,7 +95,7 @@ abstract class Abstract_Model extends CI_Model
      * $categories = $this->getModel('Category_model')->listAll("id,name",array('root'=>0),"order DESC");
      * $categories = $this->getModel('Category_model')->listAll(array('id','name'),array('root'=>0),"order DESC");
      */
-    public function listAll($fields = "", $where = array(), $order = NULL)
+    public function listAll($fields = "", $where = "", $order = NULL)
     {
         if (is_array($fields) && count($fields) > 0) {
             $this->db->select(implode(',', $fields));
@@ -105,8 +105,13 @@ abstract class Abstract_Model extends CI_Model
                 $this->db->select($fields);
             }
         }
-        if (count($where) > 0) {
+        if (is_array($where) && count($where) > 0) {
             $this->db->where($where);
+        } else if (is_string($where)) {
+            $where = trim($where);
+            if (!empty($where)) {
+                $this->db->where($where);
+            }
         }
         if ($order != NULL) {
             $this->db->order_by($order);
@@ -116,11 +121,16 @@ abstract class Abstract_Model extends CI_Model
     }
 
     /**
+     * @param $where array
      * @return integer
      */
-    public function record_count()
+    public function record_count($where = array())
     {
-        return $this->db->count_all($this->tableName());
+        if (count($where) == 0)
+            return $this->db->count_all($this->tableName());
+
+        $this->db->where($where);
+        return $this->db->count_all_results($this->tableName());
     }
 
     /**

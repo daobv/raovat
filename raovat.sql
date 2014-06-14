@@ -46,7 +46,32 @@ CREATE TABLE IF NOT EXISTS `category` (
 --
 
 INSERT INTO `category` (`id`, `root`, `name`, `slug`, `description`, `page_title`, `content_tag`, `category_type`, `order`) VALUES
-(1, 0, 'Tesst', 'the-gioi', 'Test', 'Test Category', 'Test Category', 0, 0);
+(1, 0, 'Điện thoại', 'dien-thoai', 'Test', 'Test Category', 'Test Category', 0, 0),
+(2, 0, 'Máy tính', 'may-tinh', 'Test', 'Test Category', 'Test Category', 0, 1),
+(3, 0, 'Máy ảnh, Máy quay', 'may-anh-may-quay', 'Test', 'Test Category', 'Test Category', 0, 2),
+(4, 0, 'Ô tô và xe chuyên dụng', 'oto-xe-chuyen-dung', 'Test', 'Test Category', 'Test Category', 0, 3),
+(5, 0, 'Xe máy', 'xe-may', 'Test', 'Test Category', 'Test Category', 0, 4),
+(6, 0, 'Điện tử và gia dụng', 'dien-tu-gia-dung', 'Test', 'Test Category', 'Test Category', 0, 5),
+(7, 0, 'Thời trang', 'thoi-trang', 'Test', 'Test Category', 'Test Category', 0, 6),
+(8, 0, 'Du lịch, dịch vụ', 'du-lich-dich-vu', 'Test', 'Test Category', 'Test Category', 0, 7),
+(9, 0, 'Nội, ngoại thất', 'noi-ngoai-that', 'Test', 'Test Category', 'Test Category', 0, 8),
+(10, 0, 'Thiết bị văn phòng', 'thiet-bi-van-phong', 'Test', 'Test Category', 'Test Category', 0, 9),
+(11, 0, 'Thủ công, mỹ nghệ', 'thu-cong-my-nghe', 'Test', 'Test Category', 'Test Category', 0, 10),
+(12, 0, 'Máy móc, thiết bị', 'may-moc-thiet-bi', 'Test', 'Test Category', 'Test Category', 0, 11),
+(13, 0, 'Xây dựng, Bất động sản', 'xay-dung-bat-dong-san', 'Test', 'Test Category', 'Test Category', 0, 12),
+(14, 0, 'Thể thao & Giải trí', 'the-thao-giai-tri', 'Test', 'Test Category', 'Test Category', 0, 13),
+(15, 0, 'Sức khỏe, y tế', 'suc-khoe-y-te', 'Test', 'Test Category', 'Test Category', 0, 14),
+(16, 0, 'Nhà hàng, khách sạn', 'nha-hang-khach-san', 'Test', 'Test Category', 'Test Category', 0, 15),
+(17, 0, 'Sản phẩm Nông nghiệp', 'san-pham-nong-nghiep', 'Test', 'Test Category', 'Test Category', 0, 16),
+(18, 0, 'Lao động, việc làm', 'lao-dong-viec-lam', 'Test', 'Test Category', 'Test Category', 0, 17),
+(19, 0, 'Hóa chất', 'hoa-chat', 'Test', 'Test Category', 'Test Category', 0, 18),
+(20, 0, 'Sản phẩm khác', 'khac', 'Test', 'Test Category', 'Test Category', 0, 19),
+(21, 1, 'Điện thoại-1', 'dien-thoai-1', 'Test', 'Test Category', 'Test Category', 0, 0),
+(22, 1, 'Điện thoại-2', 'dien-thoai-2', 'Test', 'Test Category', 'Test Category', 0, 0),
+(23, 1, 'Điện thoại-3', 'dien-thoai-3', 'Test', 'Test Category', 'Test Category', 0, 0),
+(24, 21, 'Điện thoại-1-1', 'dien-thoai-1-1', 'Test', 'Test Category', 'Test Category', 0, 0),
+(25, 21, 'Điện thoại-1-2', 'dien-thoai-1-2', 'Test', 'Test Category', 'Test Category', 0, 0),
+(26, 21, 'Điện thoại-1-3', 'dien-thoai-1-3', 'Test', 'Test Category', 'Test Category', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -282,7 +307,33 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `slug`, `price`, `manufacturer`, `image`, `description`, `page_title`, `content_tag`, `date`, `city_id`, `author_id`, `status`) VALUES
-(2, 'test', 'test', 39.999, 'test', '86ffc-dog1.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1);
+(2, 'test', 'test', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(3, 'test', 'test-3', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(4, 'test', 'test-4', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(5, 'test', 'test-5', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(6, 'test', 'test-6', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(7, 'test', 'test-7', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(8, 'test', 'test-8', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(9, 'test', 'test-9', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(10, 'test', 'test-10', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(11, 'test', 'test-11', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(12, 'test', 'test-12', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(13, 'test', 'test-13', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(14, 'test', 'test-14', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(15, 'test', 'test-15', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(16, 'test', 'test-16', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(17, 'test', 'test-17', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(18, 'test', 'test-18', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(19, 'test', 'test-19', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(20, 'test', 'test-20', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(21, 'test', 'test-21', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(22, 'test', 'test-22', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(23, 'test', 'test-23', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(24, 'test', 'test-24', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(25, 'test', 'test-25', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(26, 'test', 'test-26', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(27, 'test', 'test-27', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1),
+(28, 'test', 'test-28', 39.999, 'test', 'a952a-harley1c-large.jpg', '<p>\r\n	test</p>\r\n', 'test', 'test', '2014-06-10 16:23:38', 9, 1, 1);
 
 -- --------------------------------------------------------
 
