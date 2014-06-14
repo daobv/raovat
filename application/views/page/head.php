@@ -16,7 +16,8 @@
       type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
-<link href="css/style.css" rel="stylesheet" type="text/css"/>
-<link href="css/style-responsive.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url('plugins/magiczoomplus/magiczoomplus.css') ?>" rel="stylesheet" type="text/css" media="screen"/>
+<link href="<?php echo base_url('css/style.css') ?>" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url('css/style-responsive.css') ?>" rel="stylesheet" type="text/css"/>
 <!-- END PAGE LEVEL PLUGIN STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href="<?php echo base_url('favicon.ico')?>"/>

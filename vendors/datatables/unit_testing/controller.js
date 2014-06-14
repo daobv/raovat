@@ -43,7 +43,7 @@ function fnUnitStart( iTest )
 	{
 		giModuleTests = 0;
 		window.parent.test_arena.location.href = 
-			(iTest==0?"":"../")+'templates/'+gaoTest[iTest].sTemplate+'.php?scripts='+gaoTest[iTest].sTest;
+			(iTest==0?"":"../")+'templates/'+gaoTest[iTest].sTemplate+'adv.php?scripts='+gaoTest[iTest].sTest;
 		giTest = iTest;
 	}
 }
