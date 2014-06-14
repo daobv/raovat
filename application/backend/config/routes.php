@@ -86,6 +86,8 @@ $route['category'] = "category_controller/index";
 $route['category/([^\s]+)'] = "category_controller/$1";
 $route['product'] = "product_controller/index";
 $route['product/([^\s]+)'] = "product_controller/$1";
+$route['upload'] = "upload_controller/index";
+$route['upload/(.*)'] = "upload_controller/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

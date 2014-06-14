@@ -18,11 +18,7 @@
         <h2 class="form-signin-heading">Đăng nhập</h2>
         <input name="username" type="text" class="input-block-level" placeholder="Tên đăng nhập">
         <input name="password" type="password" class="input-block-level" placeholder="Mật khẩu">
-        <label class="checkbox">
-            <input type="checkbox" value="remember-me"> Ghi nhớ
-        </label>
         <button class="btn btn-large btn-primary" type="submit">Đăng nhập</button>
-        <p>Chưa đăng nhập được thì lấy DB về xong dùng pass admin/admin123 nhé</p>
     </form>
 
 </div> <!-- /container -->
