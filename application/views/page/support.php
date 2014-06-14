@@ -1,4 +1,4 @@
-<div class="support-box sidebar-box">
+<div class="support-box sidebar-box box-shadow">
     <h3 class="sidebar-title">Hỗ trợ</h3>
 
     <div class="phone">

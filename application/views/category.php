@@ -39,6 +39,7 @@
             <?php $this->load->view('page/support'); ?>
             <?php $this->load->view('page/login_block'); ?>
             <?php $this->load->view('page/latest_product'); ?>
+            <?php $this->load->view('page/friend') ?>
         </div>
         <!-- END RIGHT SIDEBAR -->
 

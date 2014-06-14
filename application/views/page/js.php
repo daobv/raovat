@@ -13,6 +13,6 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="<?php echo base_url('plugins/magiczoomplus/magiczoomplus.js') ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('js/script.js') ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('plugins/jquery-1.10.2.min.js') ?>" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

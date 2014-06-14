@@ -1,4 +1,4 @@
-<div class="sign-in-box sidebar-box">
+<div class="sign-in-box sidebar-box box-shadow">
     <h3 class="sidebar-title">Đăng nhập</h3>
 
     <form action="" method="get">
