@@ -79,6 +79,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['post/([a-z0-9]+)/(\d+)'] = "category_controller/$1/$2";
 $route['user'] = "user_controller";
+$route['post/view'] = "post_controller/view";
+$route['category'] = "category_controller/index";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

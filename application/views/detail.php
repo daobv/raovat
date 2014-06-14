@@ -28,22 +28,22 @@
     <div class="container-fluid">
         <!-- BEGIN LEFT SIDEBAR (.span3) -->
         <div id="left-sidebar">
-            <?php $this->load->view('page/left_sidebar',$categories) ?>
+            <?php $this->load->view('detail/detail') ?>
         </div>
         <!-- END LEFT SIDEBAR -->
 
         <!-- BEGIN RIGHT SIDEBAR (.span3) -->
         <div id="right-sidebar">
-            <?php $this->load->view('page/support') ?>
-            <?php $this->load->view('page/login_block') ?>
-            <?php $this->load->view('page/friend') ?>
+            <?php $this->load->view('page/support'); ?>
+            <?php $this->load->view('page/login_block'); ?>
+            <?php $this->load->view('page/latest_product'); ?>
         </div>
         <!-- END RIGHT SIDEBAR -->
 
         <!-- BEGIN MAIN CONTENT (.span6) -->
         <div id="main-content">
 
-            <?php // $this->load->view($template,$content) ?>
+
 
         </div>
         <!-- END MAIN CONTENT -->

@@ -6,6 +6,9 @@ class Category_controller extends Controller{
         parent::__construct();
     }
     public function index(){
-        var_dump($this->request());
+        $data['title'] = 'AutoMarket';
+
+        $data['content'] = "test";
+        $this->load->view('category',$data);
     }
 }
