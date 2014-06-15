@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="assets/css/fileupload/jquery.fileupload-ui-noscript.css">
 </noscript>
 <!-- The file upload form used as target for the file upload widget -->
-<form id="fileupload" action="upload/do_upload" method="POST" enctype="multipart/form-data">
+<form id="fileupload" data-pid="<?php echo $id ?>" action="upload/do_upload" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?php echo $id ?>" />
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
     <div class="row fileupload-buttonbar">
         <div class="col-lg-7">

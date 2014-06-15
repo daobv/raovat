@@ -20,14 +20,15 @@ class Product_controller extends Controller
         $crud->set_table('product');
         $crud->columns('name', 'slug', 'price', 'manufacturer', 'image', 'description', 'page_title', 'content_tag', 'date', 'city_id', 'author_id', 'status');
         $crud->required_fields('name', 'slug', 'price', 'manufacturer', 'description', 'page_title', 'content_tag', 'city_id', 'author_id', 'status');
-        $crud->add_fields('name', 'slug', 'price', 'manufacturer', 'image', 'description', 'page_title', 'content_tag', 'city_id', 'author_id', 'status');
-        $crud->edit_fields('name', 'slug', 'price', 'manufacturer', 'image', 'description', 'page_title', 'content_tag', 'city_id', 'author_id', 'status');
+        $crud->add_fields('name', 'slug', 'price', 'manufacturer', 'image', 'gallery', 'description', 'page_title', 'content_tag', 'city_id', 'author_id', 'status');
+        $crud->edit_fields('name', 'slug', 'price', 'manufacturer', 'image', 'gallery', 'description', 'page_title', 'content_tag', 'city_id', 'author_id', 'status');
         $crud->unique_fields('slug');
         $crud->display_as('name', 'Tên sản phẩm')
             ->display_as('slug', 'Đường dẫn')
             ->display_as('price', 'Giá')
             ->display_as('manufacturer', 'Hãng sản xuất')
-            ->display_as('image', 'Ảnh sản phẩm')
+            ->display_as('image', 'Ảnh chính')
+            ->display_as('gallery', 'Ảnh phụ')
             ->display_as('description', 'Mô tả')
             ->display_as('page_title', 'Tiêu đề trang')
             ->display_as('content_tag', 'Meta Content')
@@ -37,7 +38,8 @@ class Product_controller extends Controller
             ->display_as('status', 'Trạng thái')
             ->set_field_upload('image', '../assets/uploads/')
             ->set_rules('price', 'Giá', 'numeric')
-            ->set_subject('Sản phẩm');
+            ->set_subject('Sản phẩm')
+            ->callback_field('gallery', array($this, 'multiple_upload'));
 
         $crud->set_relation('author_id', 'user', 'first_name');
         $crud->set_relation('city_id', 'city', 'name');
@@ -53,5 +55,10 @@ class Product_controller extends Controller
         $data['data'] = $output;
 
         $this->load->view('layout/layout', $data);
+    }
+
+    function multiple_upload($value = '', $primary_key = null)
+    {
+        return '<iframe style="border:none;overflow-x:hidden" scrolling-x="no" width="680" height="300" border="0" src="' . base_url() . 'admin/upload/index/' . $primary_key . '"></iframe>';
     }
 }
