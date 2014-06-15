@@ -20,16 +20,14 @@ class Upload_controller extends Controller
     public function do_upload()
     {
         $id = isset($_POST['id'])? $_POST['id'] : (int)$this->uri->segment(3);
-        if ($this->getModel('product_model')->record_count(array('id'=>$id))==0) return;
+        if ($this->getModel('Product_model')->record_count(array('id'=>$id))==0) return;
 
         $upload_path_url = base_url() . 'assets/uploads/';
-
         $config['upload_path'] = UPLOAD_PATH;
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
         $config['max_size'] = '30000';
-
         $this->load->library('upload', $config);
-        $productMeta = $this->getModel('product_meta_model');
+        $productMeta = $this->getModel('Product_meta_model');
 
         if (!$this->upload->do_upload()) {
             //Load the list of existing files in the upload directory
@@ -109,7 +107,7 @@ class Upload_controller extends Controller
             $id = $m[1];
             $fileName = $m[2];
             $file = preg_replace('/([0-9]+)_/', '', $file);
-            if ($this->getModel('product_model')->record_count(array('id' => $id)) == 0) return;
+            if ($this->getModel('Product_model')->record_count(array('id' => $id)) == 0) return;
             $success = false;
             if (is_file(UPLOAD_PATH . $file))
                 $success = unlink(UPLOAD_PATH . $file);
@@ -117,7 +115,7 @@ class Upload_controller extends Controller
                 $success = unlink(UPLOAD_PATH . 'thumbs/' . $file);
 
             //Delete from database:
-            $productMeta = $this->getModel('product_meta_model');
+            $productMeta = $this->getModel('Product_meta_model');
             $images = $productMeta->getGallery($id);
             if (is_array($images) && in_array($fileName, $images)) {
                 $productMeta->rmGallery($fileName, $id);

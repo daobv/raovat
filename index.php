@@ -70,7 +70,7 @@ switch (ENVIRONMENT)
 		echo 'The application environment is not set correctly.';
 		exit(1); // EXIT_ERROR
 }
-
+error_reporting(E_ERROR | E_PARSE | E_NOTICE);
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME

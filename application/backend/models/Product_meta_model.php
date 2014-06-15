@@ -1,6 +1,6 @@
 <?php
 require_once('Abstract_model.php');
-class Product_Meta_model extends Abstract_Model{
+class Product_meta_model extends Abstract_Model{
     public $id;
     public $product_id;
     public $name;
