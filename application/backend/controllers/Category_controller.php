@@ -21,7 +21,9 @@ class Category_controller extends Controller
         $crud->set_table('category');
         $crud->columns('name', 'slug', 'description', 'root', 'page_title', 'content_tag', 'category_type', 'order');
         $crud->required_fields('name', 'slug', 'description', 'root', 'page_title', 'content_tag', 'category_type', 'order');
+        $crud->fields('name', 'slug', 'description', 'root', 'page_title', 'content_tag', 'category_type', 'order', 'product');
         $crud->unique_fields('slug');
+        $crud->unset_read();
         $crud->display_as('name', 'Tên danh mục')
             ->display_as('slug', 'Đường dẫn')
             ->display_as('description', 'Mô tả')
@@ -29,12 +31,16 @@ class Category_controller extends Controller
             ->display_as('page_title', 'Tiêu đề trang')
             ->display_as('content_tag', 'Meta Content')
             ->display_as('category_type', 'Kiểu danh mục')
+            ->display_as('product', 'Sản phẩm')
             ->display_as('order', 'Thứ tự');
 
         $crud->field_type('root', 'dropdown', $this->getDropdownRoot());
         $crud->field_type('category_type', 'dropdown', $this->getDropdownCategoryType());
         $crud->field_type('order', 'integer');
         $crud->set_subject('Danh mục');
+
+        $crud->set_relation_n_n('product', 'product_category', 'product', 'category_id', 'product_id', 'name');
+
         $output = $crud->render();
         $this->_example_output($output);
     }

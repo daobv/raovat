@@ -19,6 +19,7 @@ class User_controller extends Controller{
         $crud->columns('username','gender','first_name','last_name','dob','email','phone');
         $crud->required_fields('username', 'password', 'gender','first_name','last_name','email');
         $crud->unique_fields('username','email');
+        $crud->unset_read();
         $crud->display_as('username','Tài Khoản')
              ->display_as('password','Mật Khẩu')
             ->display_as('gender','Giới Tính')
