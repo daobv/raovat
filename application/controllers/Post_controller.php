@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 require_once('Controller.php');
 class Post_controller extends Controller{
     public function __construct()

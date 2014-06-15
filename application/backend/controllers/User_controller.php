@@ -17,6 +17,7 @@ class User_controller extends Controller{
 
         $crud->set_table('user');
         $crud->columns('username','gender','first_name','last_name','dob','email','phone');
+        $crud->required_fields('username', 'password', 'gender','first_name','last_name','email');
         $crud->unique_fields('username','email');
         $crud->display_as('username','Tài Khoản')
              ->display_as('password','Mật Khẩu')
@@ -34,6 +35,10 @@ class User_controller extends Controller{
             ->set_field_upload('avatar','../assets/uploads/');
         $crud->set_subject('user');
 
+        $crud->callback_edit_field('password', array($this, 'set_password_input_to_empty'));
+        $crud->callback_add_field('password', array($this, 'set_password_input_to_empty'));
+        $crud->callback_before_insert(array($this, 'encrypt_password'));
+        $crud->callback_before_update(array($this, 'encrypt_password'));
         $output = $crud->render();
         $this->_example_output($output);
     }
@@ -61,5 +66,14 @@ class User_controller extends Controller{
             '1' => 'Moderator',
             '2' => 'Administrator'
         );
+    }
+
+    public function encrypt_password($post_array) {
+        $post_array['password'] = sha1($post_array['password']);
+        return $post_array;
+    }
+
+    public function set_password_input_to_empty() {
+        return '<input id="field-password" name="password" type="password" value="" maxlength="255">';
     }
 }
