@@ -12,6 +12,9 @@
         <li>
             <a href="/admin/user">Quản lý User</a>
         </li>
+        <li>
+            <a href="/admin/setting">Cài đặt</a>
+        </li>
         <!--<li>
             <a href="tables.html"><i class="icon-chevron-right"></i> Tables</a>
         </li>

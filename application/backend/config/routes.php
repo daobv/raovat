@@ -81,13 +81,15 @@ $route['login'] = "index_controller/login";
 $route['loginpost'] = "index_controller/loginpost";
 $route['logout'] = "index_controller/logout";
 $route['user'] = "user_controller/index";
-$route['user/([^\s]+)'] = "user_controller/$1";
+$route['user/(.*)'] = "user_controller/$1";
 $route['category'] = "category_controller/index";
-$route['category/([^\s]+)'] = "category_controller/$1";
+$route['category/(.*)'] = "category_controller/$1";
 $route['product'] = "product_controller/index";
-$route['product/([^\s]+)'] = "product_controller/$1";
+$route['product/(.*)'] = "product_controller/$1";
 $route['upload'] = "upload_controller/index";
 $route['upload/(.*)'] = "upload_controller/$1";
+$route['setting'] = "setting_controller/index";
+$route['setting/(.*)'] = "setting_controller/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

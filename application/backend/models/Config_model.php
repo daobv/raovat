@@ -12,4 +12,14 @@ class Config_model extends Abstract_Model{
     {
         return 'config';
     }
+
+    public function getConfigArray()
+    {
+        $data = $this->listAll();
+        $config = array();
+        foreach ($data as $item) {
+            $config[$item['name']] = $item['value'];
+        }
+        return $config;
+    }
 }
